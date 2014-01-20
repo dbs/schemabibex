@@ -1,0 +1,5 @@
+Schema.org Bibliographic Extensions
+===================================
+
+This space tracks extensions proposed by the W3C Schema.org Bibliographic
+Extension group.
