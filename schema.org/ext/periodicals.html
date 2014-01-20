@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RDFa Lite Reflection</title>
+    <style type="text/css">
+      span.h {
+        padding-left: 0px;
+        font-weight: bold;
+      }
+      span {
+        display: block;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Periodicals Vocabulary</h1>
+    <p>See <a href="http://www.w3.org/community/schemabibex/wiki/Article">schemabibex wiki</a> for details.</p>
+    <!-- Change superclass of Blog to Periodical -->
+    <div typeof="rdfs:Class" resource="http://schema.org/Blog">
+      <span class="h" property="rdfs:label">Blog</span>
+      <span property="rdfs:comment">A blog</span>
+       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Periodical">Periodical</a></span>
+    </div>
+    <div typeof="rdfs:Class" resource="http://schema.org/Periodical">
+      <span class="h" property="rdfs:label">Periodical</span>
+      <span property="rdfs:comment">A publication in any medium issued in successive parts bearing numerical or chronological designations and intended, such as a magazine, scholarly journal, or newspaper to continue indefinitely.</span>
+      <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+    <div typeof="rdfs:Class" resource="http://schema.org/PublicationVolume">
+      <span class="h" property="rdfs:label">PublicationVolume</span>
+      <span property="rdfs:comment">A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.</span>
+      <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+    <div typeof="rdfs:Class" resource="http://schema.org/PublicationIssue">
+      <span class="h" property="rdfs:label">PublicationIssue</span>
+      <span property="rdfs:comment">A part of a successively published publication such as a periodical or publication volume, often numbered, usually containing a grouping of works such as articles.</span>
+      <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/hasPart">
+      <span class="h" property="rdfs:label">hasPart</span>
+      <span property="rdfs:comment">A related CreativeWork that is included either logically or physically in this CreativeWork; for example, things in a collection, parts in a multi-part work, or articles in a periodical or publication issue.</span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+    <!-- Change domain and range of isPartOf -->
+    <div typeof="rdf:Property" resource="http://schema.org/isPartOf">
+      <span class="h" property="rdfs:label">isPartOf</span>
+      <span property="rdfs:comment">A related CreativeWork (for example: collection, gallery, publication, or multi-part work) in which this is either logically or physically included.</span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/issn">
+      <span class="h" property="rdfs:label">issn</span>
+      <span property="rdfs:comment">The International Standard Serial Number (ISSN) that identifies this periodical. You can repeat this property to (for example) identify different formats of this periodical.</span>
+      <span>Domain: <a property="http://schema.org/domain" href="http://schema.org/Periodical">Periodical</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/issueNumber">
+      <span class="h" property="rdfs:label">issueNumber</span>
+      <span property="rdfs:comment">Identifies the issue of publication; for example, "iii" or "2".</span>
+      <span>Domain: <a property="http://schema.org/domain" href="http://schema.org/Periodical">PublicationIssue</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/pageEnd">
+      <span class="h" property="rdfs:label">pageEnd</span>
+      <span property="rdfs:comment">The page on which the work ends; for example "138" or "xvi".</span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationVolume</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationIssue</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">Article</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/pageStart">
+      <span class="h" property="rdfs:label">pageStart</span>
+      <span property="rdfs:comment">The page on which the work starts; for example "135" or "xiii".</span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationVolume</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationIssue</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">Article</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/pagination">
+      <span class="h" property="rdfs:label">pagination</span>
+      <span property="rdfs:comment">Any description of pages that is not separated into pageStart and pageEnd; for example, "1-6, 9, 55" or "10-12, 46-49".</span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationVolume</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">PublicationIssue</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Periodical">Article</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+    <div typeof="rdf:Property" resource="http://schema.org/volumeNumber">
+      <span class="h" property="rdfs:label">volumeNumber</span>
+      <span property="rdfs:comment">Identifies the volume of publication or multi-part work; for example, "iii" or "2".</span>
+      <span>Domain: <a property="http://schema.org/domain" href="http://schema.org/Periodical">PublicationVolume</a></span>
+      <span>Range: <a property="http://schema.org/range" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+    <hr />
+
+<h2>Examples for Periodical, PublicationVolume, PublicationIssue, and Article</h2>
+
+<p>The following examples could be used on the schema:Periodical, schema:PublicationIssue, schema:PublicationVolume, and schema:Article documentation.</p>
+
+<h3>Example 1</h3>
+<p>A list of the issues for a single volume of a given periodical.</p>
+<p><b>Original HTML</b></p>
+<pre class="prettyprint lang-html linenums">
+ &lt;article&gt;
+   &lt;h1&gt;The Lancet&lt;/h1&gt;
+   &lt;p&gt;Volume 376, July 2010-December 2010&lt;/p&gt;
+   &lt;p&gt;Published by Elsevier
+   &lt;ul&gt;
+     &lt;li&gt;ISSN: 0140-6736&lt;/li&gt;
+   &lt;/ul&gt;
+   &lt;h3&gt;Issues:&lt;/h3&gt;
+   &lt;ul&gt;
+     &lt;li&gt;No. 9734 Jul 3, 2010 p 1-68&lt;/li&gt;
+     &lt;li&gt;No. 9735 Jul 10, 2010 p 69-140&lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;/article&gt;
+</pre>
+
+<p><b>With schema.org</b></p>
+<pre class="prettyprint lang-html linenums">
+ &lt;article vocab="http://schema.org/" typeof="Periodical"&gt;
+   &lt;h1 property="name"&gt;The Lancet&lt;/h1&gt;
+   &lt;p&gt;Volume 376, July 2010-December 2010&lt;/p&gt;
+   &lt;p&gt;Published by &lt;span property="publisher"&gt;Elsevier&lt;/span&gt;
+   &lt;ul&gt;
+     &lt;li&gt;ISSN: &lt;span property="issn"&gt;0140-6736&lt;/span&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+   &lt;h3&gt;Issues:&lt;/h3&gt;
+   &lt;div property="hasPart" typeof="PublicationVolume"&gt;
+     &lt;meta property="volumeNumber" content="376"&gt;
+     &lt;ul&gt;
+       &lt;li property="hasPart" typeof="PublicationIssue"&gt;No. 
+         &lt;span property="issueNumber"&gt;9734&lt;/span&gt;
+         &lt;time datetime="2010-07-03" property="datePublished"&gt;Jul 3, 2010&lt;/time&gt;
+         p &lt;span property="pageStart"&gt;1&lt;/span&gt;-&lt;span property="pageEnd"&gt;68&lt;/span&gt;
+       &lt;/li&gt;
+       &lt;li property="hasPart" typeof="PublicationIssue"&gt;No.
+         &lt;span property="issueNumber"&gt;9735&lt;/span&gt;
+         &lt;time datetime="2010-07-03" property="datePublished"&gt;Jul 10, 2010&lt;/time&gt;
+         p &lt;span property="pageStart"&gt;69&lt;/span&gt;-&lt;span property="pageEnd"&gt;140&lt;/span&gt;
+       &lt;/li&gt;
+       &lt;/ul&gt;
+    &lt;/div&gt;
+ &lt;/article&gt;
+</pre>
+
+<h3>Example 2</h3>
+
+<p>An article, fully linked to the issue, volume, and periodical in which it was published.</p>
+
+<p><b>Original HTML</b></p>
+<pre class="prettyprint lang-html linenums">
+  &lt;div&gt;
+    &lt;strong&gt;Title:&lt;/strong&gt; Be Careful What You Wish For: FRBR, Some Lacunae, A Review&lt;br /&gt;
+    &lt;strong&gt;Author:&lt;/strong&gt; Smiraglia, Richard P.&lt;br /&gt;
+    &lt;strong&gt;Subjects:&lt;/strong&gt; Catalog ; Works &lt;br /&gt;
+    &lt;strong&gt;Is Part Of:&lt;/strong&gt;
+    &lt;div&gt;Cataloging &amp;amp; Classification Quarterly, 2012, Vol. 50 (5),&lt;/div&gt;
+    &lt;div&gt;p.360-368 [Peer Reviewed Journal]&lt;br /&gt;
+      &lt;strong&gt;Description:&lt;/strong&gt;
+        The library catalog as a catalog of works
+        was an infectious idea, which together with research led to
+        reconceptualization in the form of the FRBR conceptual model. Two
+        categories of lacunae emerge—the expression entity, and gaps in the
+        model such as aggregates and dynamic documents. Evidence needed to
+        extend the FRBR model is available in contemporary research on
+        instantiation. The challenge for the bibliographic community is to
+        begin to think of FRBR as a form of knowledge organization system,
+        adding a final dimension to classification. The articles in the present
+        special issue offer a compendium of the promise of the FRBR
+        model.
+    &lt;/div&gt;
+    &lt;strong&gt;Publisher:&lt;/strong&gt; Taylor &amp;amp; Francis Group&lt;br /&gt;
+    &lt;strong&gt;Source:&lt;/strong&gt; Routledge, Taylor &amp;amp; Francis Group&lt;br /&gt;
+    &lt;strong&gt;ISSN:&lt;/strong&gt; 0163-9374 ;&lt;br /&gt;
+    &lt;strong&gt;E-ISSN:&lt;/strong&gt; 1544-4554;&lt;br /&gt;
+    &lt;strong&gt;DOI:&lt;/strong&gt;
+    &lt;a href="http://dx.doi.org/10.1080/01639374.2012.682254"&gt;10.1080/01639374.2012.682254&lt;/a&gt;
+  &lt;/div&gt;
+</pre>
+
+<p><b>Data, as Turtle</b></p>
+<pre class="prettyprint lang-html linenums">
+@prefix : &lt;http://schema.org/&gt; .
+
+[] a :ScholarlyArticle ;
+    :about "Catalog", "Works" ;
+    :author "Smiraglia, Richard P." ;
+    :description """The library catalog as a catalog of works
+        was an infectious idea, which together with research led to
+        reconceptualization in the form of the FRBR conceptual model. Two
+        categories of lacunae emerge—the expression entity, and gaps in the
+        model such as aggregates and dynamic documents. Evidence needed to
+        extend the FRBR model is available in contemporary research on
+        instantiation. The challenge for the bibliographic community is to
+        begin to think of FRBR as a form of knowledge organization system,
+        adding a final dimension to classification. The articles in the present
+        special issue offer a compendium of the promise of the FRBR
+        model.""" ;
+    :isPartOf &lt;#issue&gt; ;
+    :name "Be Careful What You Wish For: FRBR, Some Lacunae, A Review" ;
+    :pageEnd "368" ;
+    :pageStart "360" ;
+    :sameAs &lt;http://dx.doi.org/10.1080/01639374.2012.682254&gt; .
+
+&lt;#issue&gt; a :PublicationIssue ;
+    :datePublished "2012" ;
+    :isPartOf [ a :PublicationVolume ;
+            :isPartOf &lt;#periodical&gt; ;
+            :volumeNumber "50" ] ;
+    :issueNumber "5" .
+
+&lt;#periodical&gt; a :Periodical ;
+    :issn "0163-9374",
+        "1544-4554" ;
+    :name "Cataloging &amp; Classification Quarterly" ;
+    :publisher "Taylor &amp; Francis Group" .
+</pre>
+ 
+<p><b>With schema.org (microdata)</b></p>
+<pre class="prettyprint lang-html linenums">
+  &lt;div itemscope itemtype="http://schema.org/ScholarlyArticle"&gt;
+    &lt;strong&gt;Title:&lt;/strong&gt; &lt;span itemprop="name"&gt;Be Careful What You Wish For: FRBR, Some Lacunae, A Review&lt;/span&gt;&lt;br /&gt;
+    &lt;strong&gt;Author:&lt;/strong&gt; &lt;span itemprop="author"&gt;Smiraglia, Richard P.&lt;/span&gt;&lt;br /&gt;
+    &lt;strong&gt;Subjects:&lt;/strong&gt; &lt;span itemprop="about"&gt;Catalog&lt;/span&gt; ; &lt;span itemprop="about"&gt;Works&lt;/span&gt; &lt;br /&gt;
+    &lt;strong&gt;Is Part Of:&lt;/strong&gt;
+    &lt;div itemprop="isPartOf" itemscope
+         itemtype="http://schema.org/PublicationIssue" itemid="http://example.org/article#issue"&gt;
+      &lt;span itemscope itemtype="http://schema.org/Periodical" itemid="http://example.org/article#periodical"&gt;
+        &lt;span itemprop="name"&gt;Cataloging &amp;amp; Classification Quarterly&lt;/span&gt;,
+      &lt;/span&gt;
+      &lt;span itemprop="datePublished"&gt;2012&lt;/span&gt;,
+      Vol.&lt;span itemprop="isPartOf" itemscope
+                itemtype="http://schema.org/PublicationVolume"&gt;&lt;link
+                itemprop="isPartOf" href="http://example.org/article#periodical" /&gt;&lt;span
+                itemprop="volumeNumber"&gt;50&lt;/span&gt;&lt;/span&gt;(&lt;span
+            itemprop="issueNumber"&gt;5&lt;/span&gt;),
+    &lt;/div&gt;
+    &lt;div&gt;
+      p.&lt;span itemprop="pageStart"&gt;360&lt;/span&gt;-&lt;span itemprop="pageEnd"&gt;368&lt;/span&gt; [Peer Reviewed Journal]&lt;br /&gt;
+      &lt;strong&gt;Description:&lt;/strong&gt;
+      &lt;span itemprop="description"&gt;The library catalog as a catalog of works
+        was an infectious idea, which together with research led to
+        reconceptualization in the form of the FRBR conceptual model. Two
+        categories of lacunae emerge—the expression entity, and gaps in the
+        model such as aggregates and dynamic documents. Evidence needed to
+        extend the FRBR model is available in contemporary research on
+        instantiation. The challenge for the bibliographic community is to
+        begin to think of FRBR as a form of knowledge organization system,
+        adding a final dimension to classification. The articles in the present
+        special issue offer a compendium of the promise of the FRBR
+        model.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span itemscope itemtype="http://schema.org/Periodical" itemid="http://example.org/article#periodical"&gt;
+      &lt;strong&gt;Publisher:&lt;/strong&gt;
+      &lt;span itemprop="publisher"&gt;Taylor &amp;amp; Francis Group&lt;/span&gt;&lt;br /&gt;
+      &lt;strong&gt;Source:&lt;/strong&gt; Routledge, Taylor &amp;amp; Francis Group&lt;br /&gt;
+      &lt;strong&gt;ISSN:&lt;/strong&gt; &lt;span itemprop="issn"&gt;0163-9374&lt;/span&gt; ;&lt;br /&gt;
+      &lt;strong&gt;E-ISSN:&lt;/strong&gt; &lt;span itemprop="issn"&gt;1544-4554&lt;/span&gt; ;&lt;br /&gt;
+    &lt;/span&gt;
+    &lt;strong&gt;DOI:&lt;/strong&gt;
+    &lt;a itemprop="sameAs" href="http://dx.doi.org/10.1080/01639374.2012.682254"&gt;10.1080/01639374.2012.682254&lt;/a&gt;
+  &lt;/div&gt;
+</pre>
+
+<p><b>With schema.org (RDFa)</b></p>
+<pre class="prettyprint lang-html linenums">
+  &lt;div vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
+    &lt;strong&gt;Title:&lt;/strong&gt; &lt;span property="name"&gt;Be Careful What You Wish For: FRBR, Some Lacunae, A Review&lt;/span&gt;&lt;br /&gt;
+    &lt;strong&gt;Author:&lt;/strong&gt; &lt;span property="author"&gt;Smiraglia, Richard P.&lt;/span&gt;&lt;br /&gt;
+    &lt;strong&gt;Subjects:&lt;/strong&gt; &lt;span property="about"&gt;Catalog&lt;/span&gt; ; &lt;span property="about"&gt;Works&lt;/span&gt; &lt;br /&gt;
+    &lt;strong&gt;Is Part Of:&lt;/strong&gt;
+    &lt;div property="isPartOf" typeof="PublicationIssue" resource="#issue"&gt;
+      &lt;span typeof="Periodical" resource="#periodical"&gt;
+        &lt;span property="name"&gt;Cataloging &amp;amp; Classification Quarterly&lt;/span&gt;,
+      &lt;/span&gt;
+      &lt;span property="datePublished"&gt;2012&lt;/span&gt;,
+      Vol.&lt;span property="isPartOf" typeof="PublicationVolume"&gt;&lt;link
+                property="isPartOf" resource="#periodical" /&gt;&lt;span
+                property="volumeNumber"&gt;50&lt;/span&gt;&lt;/span&gt;(&lt;span
+            property="issueNumber"&gt;5&lt;/span&gt;),
+    &lt;/div&gt;
+    &lt;div&gt;
+      p.&lt;span property="pageStart"&gt;360&lt;/span&gt;-&lt;span property="pageEnd"&gt;368&lt;/span&gt; [Peer Reviewed Journal]&lt;br /&gt;
+      &lt;strong&gt;Description:&lt;/strong&gt;
+      &lt;span property="description"&gt;The library catalog as a catalog of works
+        was an infectious idea, which together with research led to
+        reconceptualization in the form of the FRBR conceptual model. Two
+        categories of lacunae emerge—the expression entity, and gaps in the
+        model such as aggregates and dynamic documents. Evidence needed to
+        extend the FRBR model is available in contemporary research on
+        instantiation. The challenge for the bibliographic community is to
+        begin to think of FRBR as a form of knowledge organization system,
+        adding a final dimension to classification. The articles in the present
+        special issue offer a compendium of the promise of the FRBR
+        model.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span resource="#periodical"&gt;
+      &lt;strong&gt;Publisher:&lt;/strong&gt;
+      &lt;span property="publisher"&gt;Taylor &amp;amp; Francis Group&lt;/span&gt;&lt;br /&gt;
+      &lt;strong&gt;Source:&lt;/strong&gt; Routledge, Taylor &amp;amp; Francis Group&lt;br /&gt;
+      &lt;strong&gt;ISSN:&lt;/strong&gt; &lt;span property="issn"&gt;0163-9374&lt;/span&gt; ;&lt;br /&gt;
+      &lt;strong&gt;E-ISSN:&lt;/strong&gt; &lt;span property="issn"&gt;1544-4554&lt;/span&gt; ;&lt;br /&gt;
+    &lt;/span&gt;
+    &lt;strong&gt;DOI:&lt;/strong&gt;
+    &lt;a property="sameAs" href="http://dx.doi.org/10.1080/01639374.2012.682254"&gt;10.1080/01639374.2012.682254&lt;/a&gt;
+  &lt;/div&gt;
+</pre>
+
+<h2>Example of a multi-volume book (to add to Book and PublicationVolume documentation)</h2>
+
+<h3>Example 1</h3>
+
+<p>The following example describes a trilogy of books with numbered volumes.</p>
+
+<p><b>Original HTML</b></p>
+<pre class="prettyprint lang-html linenums">
+&lt;p&gt;
+  The &lt;strong&gt;Lord of the Rings&lt;/strong&gt; is an English-language fictional trilogy by J. R. R. Tolkien (1892-1973).
+&lt;/p&gt;
+&lt;p&gt;
+  The books in the trilogy are:
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vol. 1: The Fellowship of the Ring&lt;/li&gt;
+  &lt;li&gt;Vol. 2: The Two Towers&lt;/li&gt;
+  &lt;li&gt;Vol. 3: The Return of the King&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p><b>With schema.org (RDFa):</b></p>
+<pre class="prettyprint lang-html linenums">
+&lt;div vocab="http://schema.org/"&gt;
+&lt;p typeof="Book" resource="#trilogy"&gt;
+&lt;link property="about" href="http://id.worldcat.org/fast/1020337"&gt;
+  The &lt;strong property="name"&gt;Lord of the Rings&lt;/strong&gt; is an 
+  &lt;span property="inLanguage" content="en"&gt;English-language&lt;/span&gt; 
+  &lt;span property="genre" property="Fiction"&gt;fictional&lt;/span&gt; trilogy by
+&lt;span property="author" typeof="Person" resource="#author"&gt;
+  &lt;link property="sameAs" href="http://viaf.org/viaf/95218067"&gt;
+  &lt;span property="name" content="Tolkien, J. R. R. (John Ronald Reuel)"&gt;J. R. R. Tolkien&lt;/span&gt;
+  (&lt;span property="birthDate"&gt;1892&lt;/span&gt;-&lt;span property="deathDate"&gt;1973&lt;/span&gt;).
+&lt;/span&gt;
+&lt;link property="hasPart" href="#book1"&gt;
+&lt;link property="hasPart" href="#book2"&gt;
+&lt;link property="hasPart" href="#book3"&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  The books in the trilogy are:
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li typeof="Book PublicationVolume" resource="#book1"&gt;
+    Vol. &lt;span property="volumeNumber"&gt;1&lt;/span&gt;:
+    &lt;link property="about" href="http://id.worldcat.org/fast/1020337"&gt;
+    &lt;link property="isPartOf" href="#trilogy"&gt;
+    &lt;link property="author" href="#author"&gt;
+    &lt;meta property="inLanguage" content="en"&gt;
+    &lt;span property="name"&gt;The Fellowship of the Ring&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li typeof="Book PublicationVolume" resource="#book2"&gt;
+    Vol. &lt;span property="volumeNumber"&gt;3&lt;/span&gt;:
+    &lt;link property="about" href="http://id.worldcat.org/fast/1020337"&gt;
+    &lt;link property="isPartOf" href="#trilogy"&gt;
+    &lt;link property="author" href="#author"&gt;
+    &lt;meta property="inLanguage" content="en"&gt;
+    &lt;span property="name"&gt;The Two Towers&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li typeof="Book PublicationVolume" resource="#book3"&gt;
+    Vol. &lt;span property="volumeNumber"&gt;3&lt;/span&gt;:
+    &lt;link property="about" href="http://id.worldcat.org/fast/1020337"&gt;
+    &lt;link property="isPartOf" href="#trilogy"&gt;
+    &lt;link property="author" href="#author"&gt;
+    &lt;meta property="inLanguage" content="en"&gt;
+    &lt;span property="name"&gt;The Return of the King&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+<p><b>JSON-LD (experimental)</b></p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type="application/ld+json"&gt;
+{
+   "@context" : "http://schema.org", 
+   "@graph": [
+        {
+            "@id": "#trilogy", 
+            "@type": "Book", 
+            "about": "http://id.worldcat.org/fast/1020337", 
+            "author": "#author", 
+            "hasPart": [
+                {
+                    "@id": "#book1", 
+                    "@type": [
+                        "Book", 
+                        "PublicationVolume"
+                    ], 
+                    "about": "http://id.worldcat.org/fast/1020337", 
+                    "author": "#author", 
+                    "volumeNumber": "1", 
+                    "inLanguage": "en", 
+                    "isPartOf": "#trilogy", 
+                    "name": "The Fellowship of the Ring"
+                }, 
+                {
+                    "@id": "#book2", 
+                    "@type": [
+                        "Book", 
+                        "PublicationVolume"
+                    ], 
+                    "about": "http://id.worldcat.org/fast/1020337", 
+                    "author": "#author", 
+                    "volumeNumber": "3", 
+                    "inLanguage": "en", 
+                    "isPartOf": "#trilogy", 
+                    "name": "The Two Towers"
+                }, 
+                {
+                    "@id": "#book3", 
+                    "@type": [
+                        "Book", 
+                        "PublicationVolume"
+                    ], 
+                    "about": "http://id.worldcat.org/fast/1020337", 
+                    "author": "#author", 
+                    "volumeNumber": "3", 
+                    "inLanguage": "en", 
+                    "isPartOf": "#trilogy", 
+                    "name": "The Return of the King"
+                }
+            ], 
+            "genre": "fictional", 
+            "inLanguage": "en", 
+            "name": "Lord of the Rings"
+        }, 
+        {
+            "@id": "#author", 
+            "@type": "Person", 
+            "birthDate": "1892", 
+            "sameAs": "http://viaf.org/viaf/95218067", 
+            "deathDate": "1973", 
+            "name": "Tolkien, J. R. R. (John Ronald Reuel)"
+        }
+    ]
+}
+&lt;/script&gt;
+</pre>
+
+<p><b>Original turtle</b></p>
+<pre class="prettyprint lang-html linenums">
+&lt;http://exampleworks.org/work/12345&gt; 
+	a schema:Book;
+	schema:name "Lord of the Rings";
+	schema:about &lt;http://id.worldcat.org/fast/1020337&gt;;
+	schema:author &lt;http://viaf.org/viaf/95218067&gt;;
+	schema:author [ a schema:Person;
+					schema:name "Tolkien, J. R. R. (John Ronald Reuel), 1892-1973."];
+	schema:inLanguage "en";
+	schema:genre "Fiction";
+	schema:description	"v. 1. The fellowship of the ring.--v. 2. The two towers.--v. 3. The return of the king.";
+	schema:hasPart &lt;http://exampleworks.org/work/12346&gt;; 
+	schema:hasPart &lt;http://exampleworks.org/work/12347&gt;;
+	schema:hasPart &lt;http://exampleworks.org/work/12348&gt;.
+
+&lt;http://exampleworks.org/work/12346&gt; 
+	a schema:Book;
+        a schema:PublicationVolume;
+	schema:name "The fellowship of the ring";
+	schema:about &lt;http://id.worldcat.org/fast/1020337&gt;;
+	schema:author &lt;http://viaf.org/viaf/95218067&gt;;
+	schema:author [ a schema:Person;
+					schema:name "Tolkien, J. R. R. (John Ronald Reuel), 1892-1973."];
+	schema:inLanguage "en";
+	schema:genre "Fiction";
+	schema:description	"Lord of the Rings Pt1";
+        schema:volumeNumber "1";
+	schema:isPartOf &lt;http://exampleworks.org/work/12345&gt;.
+
+&lt;http://exampleworks.org/work/12347&gt; 
+	a schema:Book;
+        a schema:PublicationVolume;
+	schema:name "The two towers";
+	schema:about &lt;http://id.worldcat.org/fast/1020337&gt;;
+	schema:author &lt;http://viaf.org/viaf/95218067&gt;;
+	schema:author [ a schema:Person;
+					schema:name "Tolkien, J. R. R. (John Ronald Reuel), 1892-1973."];
+	schema:inLanguage "en";
+	schema:genre "Fiction";
+	schema:description	"Lord of the Rings Pt2";
+        schema:volumeNumber "2";
+	schema:isPartOf &lt;http://exampleworks.org/work/12345&gt;.
+
+&lt;http://exampleworks.org/work/12348&gt; 
+	a schema:Book;
+        a schema:PublicationVolume;
+	schema:name "The return of the king.";
+	schema:about &lt;http://id.worldcat.org/fast/1020337&gt;;
+	schema:author &lt;http://viaf.org/viaf/95218067&gt;;
+	schema:author [ a schema:Person;
+					schema:name "Tolkien, J. R. R. (John Ronald Reuel), 1892-1973."];
+	schema:inLanguage "en";
+	schema:genre "Fiction";
+	schema:description	"Lord of the Rings Pt3";
+        schema:volumeNumber "3";
+	schema:isPartOf &lt;http://exampleworks.org/work/12345&gt;.
+</pre>
+
+<!-- Need to credit BIBO and add owl:equivalentOf assertions -->
+<div typeof="http://schema.org/Organization" resource="http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_BiBoProperties">
+  <span property="rdfs:label">BiBoProperties</span>
+  <span property="rdfs:comment">This class includes properties whose definitions are based on the work of the Bibliographic Ontology project, see http://bibliontology.com for details.</span>
+</div>
+
+<div typeof="http://schema.org/Organization" resource="http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_BiBoClass">
+  <span property="rdfs:label">BiBoClass</span>
+  <span property="rdfs:comment">This class is based on the work of the Bibliographic Ontology project, see http://bilbiontology.com for details.</span>
+</div>
+
+  </body>
+</html>
